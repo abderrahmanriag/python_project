@@ -10,7 +10,7 @@ backround_color="black"
 label_bg="black"; label_fg="white"
 FONT=("Courier",15)
 FONT_Lable=("Arial", 15)
-FONT_ENTRY=("Courier",7)
+FONT_ENTRY=("Arial",7)
 root.configure(background=backround_color)
 def create():
     row0 = 0;row1 = 1;row2 = 2;row3=3;row4 = 4;row5 = 5;row6 = 6
@@ -19,23 +19,16 @@ def create():
     e = Entry(root, width=45, borderwidth=2, bg="white", fg="black")
     e.grid(row=row1, column=0, columnspan=4, padx=10, pady=10)
     e.insert(0, 0)
-    r=1
     def button_click(number):
         current=e.get()
         e.delete(0, END)
-        if current==r:
-            if number == ".":
-                e.insert(0, "0" + str(number))
-            else:
+        if number == ".":
+            e.insert(0, str(current) + str(number))
+        else:
+            if current == "0":
                 e.insert(0, number)
-        if current!=r:
-            if number == ".":
-                e.insert(0, str(current) + str(number))
             else:
-                if current == "0":
-                    e.insert(0, number)
-                else:
-                    e.insert(0, str(current) + str(number))
+                e.insert(0, str(current) + str(number))
     def button_equal():
         second_number=e.get()
         e.delete(0, END)
